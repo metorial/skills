@@ -38,34 +38,4 @@ https://skills.metorial.com/metorial-getting-started/SKILL.md
 ```bash
 git clone https://github.com/metorial/skills.git
 cp -R skills/metorial-* ~/.claude/skills/
-```
-
-## Layout
-
-```
-<skill>/
-├── SKILL.md                 # frontmatter (name, description) + the workflow
-└── references/
-    ├── commands.md          # generated: every CLI command ↔ MCP tool for the area
-    └── *.md                 # hand-written details (resources, sub-workflows)
-scripts/generate-references.ts
-```
-
-## Regenerate command references
-
-`references/commands.md` files come from the admin CLI catalog and the admin MCP contract, which are generated from the same API manifest. Regenerate them after either changes:
-
-```bash
-bun scripts/generate-references.ts
-```
-
-By default the script reads sibling checkouts (`../metorial-enterprise/oss/cli/internal/generated/admin/catalog.go` and `../metorial/integrations/metorial-admin/src/lib/contract.json`). Override with `--catalog` / `--contract` or `METORIAL_CLI_CATALOG` / `METORIAL_ADMIN_CONTRACT`. Commands that are hand-written in the CLI or only exist on one side are listed in the script's extras.
-
-## Writing guidelines
-
-- Lead with the result. Show one best path, with real commands.
-- CLI commands in examples, plus one line on the MCP mapping (command path joined with underscores).
-- Verify every command and flag against `metorial-admin <command> --help` and the MCP contract.
-- Link with full `https://skills.metorial.com/...` URLs so remote agents can follow them.
-- Keep each `SKILL.md` under 500 lines. Move details into `references/`.
-- Never instruct agents to print secrets into the chat. Confirm destructive actions.
+cp -R skills/metorial-* ~/.agents/skills/
