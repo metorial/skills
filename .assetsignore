@@ -5,3 +5,7 @@ worker
 scripts
 LICENSE
 *.html
+.git
+.github
+.wrangler
+node_modules
